@@ -16,15 +16,18 @@ jobs:
         with:
           java-version: 11
 
+      - name: Install Gradle
+        run: sudo apt-get install gradle -y
+
       - name: Build Admin App
         run: |
           cd AdminApp
-          ./gradlew assembleDebug
+          gradle build
 
       - name: Build User App
         run: |
           cd UserApp
-          ./gradlew assembleDebug
+          gradle build
 
       - name: Upload APKs
         uses: actions/upload-artifact@v2
